@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Page personnelle - Prince</title>
+
+    <style>
+        /* BODY */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            margin: 0;
+        }
+
+        /* MENU FIXE */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255,255,255,0.9);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            padding: 15px 0;
+            z-index: 100;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #2575fc;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #6a11cb;
+        }
+
+        /* CONTAINER CENTRAL */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 100px 20px 50px; /* padding-top pour menu */
+        }
+
+        /* CARD PRINCIPALE */
+        .card {
+            background-color: white;
+            padding: 40px 50px;
+            border-radius: 20px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s, opacity 1s;
+            opacity: 0;
+        }
+
+        .card.visible {
+            opacity: 1;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+        }
+
+        /* PROFILE PIC */
+        .profile-pic {
+            width: 130px;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 4px solid #2575fc;
+        }
+
+        /* HEADINGS & TEXT */
+        h1 {
+            color: #222;
+            margin-bottom: 12px;
+            font-size: 24px;
+        }
+
+        p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* CONTACTS */
+        .contacts {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .contacts a {
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-size: 14px;
+            color: white;
+            background-color: #2575fc;
+            box-shadow: 0 5px 15px rgba(37,117,252,0.3);
+            transition: all 0.3s;
+        }
+
+        .contacts a:hover {
+            background-color: #6a11cb;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(106,17,203,0.4);
+        }
+
+        /* SECTION À PROPOS */
+        .about {
+            background-color: rgba(255, 255, 255, 0.95);
+            margin-top: 40px;
+            padding: 40px 50px;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: opacity 1s;
+            opacity: 0;
+        }
+
+        .about.visible {
+            opacity: 1;
+        }
+
+        .about h2 {
+            margin-bottom: 15px;
+            color: #222;
+            font-size: 22px;
+        }
+
+        .about p {
+            font-size: 16px;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        /* SECTION SERVICES / COMPETENCES */
+        .services {
+            background-color: rgba(255,255,255,0.95);
+            margin-top: 40px;
+            padding: 40px 50px;
+            border-radius: 20px;
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .services h2 {
+            margin-bottom: 25px;
+            font-size: 22px;
+            color: #222;
+        }
+
+        .service-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .service-item {
+            background-color: #2575fc;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .service-item:hover {
+            transform: translateY(-3px);
+            background-color: #6a11cb;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .card, .about, .services {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            .profile-pic {
+                width: 110px;
+                height: 110px;
+            }
+
+            .service-item {
+                font-size: 13px;
+                padding: 8px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MENU -->
+    <nav>
+        <a href="#home">Accueil</a>
+        <a href="#about">À propos</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- CONTAINER -->
+    <div class="container">
+
+        <!-- CARD PRINCIPALE -->
+        <div class="card" id="home">
+            <img src="images/profil.jpg" alt="Photo de Prince" class="profile-pic">
+
+            <h1>Bonjour, je m’appelle MOM-ART</h1>
+
+            <p>
+                Créateur de contenus et futur développeur web.
+                J’aime apprendre, construire et partager.
+            </p>
+
+            <div class="contacts" id="contact">
+                <a href="https://wa.me/221782482668" target="_blank">WhatsApp</a>
+                <a href="mailto:momarfaye907@email.com">Email</a>
+                <a href="https://instagram.com/momzo212" target="_blank">Instagram</a>
+            </div>
+        </div>
+
+        <!-- SECTION À PROPOS -->
+        <div class="about">
+            <h2>À propos de moi</h2>
+            <p>
+                Passionné par la création de contenus numériques et le développement web,
+                je cherche toujours à apprendre de nouvelles compétences et à relever
+                des défis. J’aime partager mes idées et collaborer sur des projets créatifs.
+            </p>
+        </div>
+
+        <!-- SECTION SERVICES / COMPÉTENCES -->
+        <div class="services" id="services">
+            <h2>Mes Compétences</h2>
+            <div class="service-list">
+                <div class="service-item">Affiche publicitaire</div>
+                <div class="service-item">Création de facture personnalisée</div>
+                <div class="service-item">Personnalisation sachet et sac</div>
+                <div class="service-item">Impression sur Casquette / Polo / Tee-shirt</div>
+                <div class="service-item">Badge PVC ou simple</div>
+                <div class="service-item">Carnet</div>
+                <div class="service-item">Carte de visite</div>
+                <div class="service-item">Curriculum vitae (CV)</div>
+                <div class="service-item">Brochure</div>
+                <div class="service-item">Personnalisation gourde / tasse</div>
+                <div class="service-item">Flyers et dépliant</div>
+                <div class="service-item">Bâche numérique</div>
+                <div class="service-item">Carte de mariage</div>
+                <div class="service-item">Impression sur vinyle</div>
+                <div class="service-item">Création de tableau mural sur dimension</div>
+                <div class="service-item">Création de site web</div>
+                <div class="service-item">Montage vidéo</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SCRIPT POUR ANIMATIONS -->
+    <script>
+        window.addEventListener('load', () => {
+            document.querySelector('.card').classList.add('visible');
+            document.querySelector('.about').classList.add('visible');
+        });
+    </script>
+
+</body>
+</html>
